@@ -392,9 +392,7 @@ def main():
 
     print("Processing with sobel magnitude...")
     # Calculate gradient magnitude
-    gradient_magnitude = np.sqrt(
-        np.square(sobel_x_result) + np.square(sobel_y_result)
-    )
+    gradient_magnitude = np.abs(sobel_x_result) + np.abs(sobel_y_result)
 
     # Save normalized gradient magnitude
     sobel_magnitude = img_utils.normalize_image(gradient_magnitude).astype(np.uint8)
