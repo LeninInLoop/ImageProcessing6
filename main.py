@@ -231,7 +231,7 @@ class Visualizer:
 
     @staticmethod
     def plot_sobel(x_sobel: np.ndarray, y_sobel: np.ndarray, sobel_magnitude: np.ndarray, filename: str) -> None:
-        fig, axs = plt.subplots(1, 3, figsize=(15, 5))
+        fig, axs = plt.subplots(3, 1, figsize=(5, 15))
         axs[0].imshow(x_sobel, cmap="gray")
         axs[0].set_title('X-Sobel', fontsize=14, fontweight='bold', pad=10)
 
@@ -252,7 +252,7 @@ class ImageEnhancer:
     def apply_power_law_transform(image: np.ndarray, gamma: float) -> np.ndarray:
         """Apply power-law (gamma) transformation to an image."""
         # Normalize to [0, 1] range
-        normalized = image.astype(np.float32) / 255.0
+        normalized = ImageUtils.normalize_image(image) / 255.0
 
         # Apply power-law transform
         transformed = np.power(normalized, gamma)
